@@ -1,16 +1,196 @@
-<html>
-  <head>
-    <title>variarti</title>
-    <style>
-      body {
-        background: pink;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>variarti</h1>
-    <h2>second</h2>
-    <h3>third</h3>
-    <p>Lorem ipsum <b>dolor</b> sit amet</p>
-  </body>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Varvara — Ceramics & Paintings</title>
+  <meta name="description" content="Varvara — a lightweight single-page portfolio showcasing ceramics and paintings." />
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#111315;
+      --muted:#6b7280;
+      --accent:#0f766e; /* teal-ish, subtle */
+      --border:#e5e7eb;
+      --card:#fafafa;
+      --max:1000px;
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; color:var(--text); background:var(--bg);
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* Layout */
+    .container{max-width:var(--max); margin-inline:auto; padding:0 1rem}
+    header{position:sticky; top:0; backdrop-filter:saturate(180%) blur(6px); background:color-mix(in oklab, var(--bg) 85%, transparent); border-bottom:1px solid var(--border); z-index:10}
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:0.75rem 0}
+    .brand{font-weight:700; letter-spacing:0.2px}
+    .brand span{color:var(--muted); font-weight:500}
+    nav ul{display:flex; gap:1rem; list-style:none; margin:0; padding:0}
+    nav a{padding:0.4rem 0.6rem; border-radius:999px}
+    nav a:hover{background:var(--card)}
+
+    .hero{padding:3.5rem 0 2rem; border-bottom:1px solid var(--border)}
+    .hero h1{font-size:clamp(1.6rem,3.2vw,2.2rem); margin:0 0 0.25rem 0}
+    .hero p{margin:0; color:var(--muted)}
+
+    section{padding:2.5rem 0}
+    section h2{font-size:1.4rem; margin:0 0 1rem; letter-spacing:0.2px}
+    .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:14px}
+    .card{background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden}
+    .card img{display:block; width:100%; aspect-ratio:4/3; object-fit:cover; background:#ddd}
+    .card figcaption{padding:10px 12px; font-size:0.95rem}
+    .card small{display:block; color:var(--muted)}
+
+    .about{background:linear-gradient(180deg, #fff, #fcfcfc); border-top:1px solid var(--border); border-bottom:1px solid var(--border)}
+    .about p{max-width:70ch}
+
+    footer{border-top:1px solid var(--border); background:#f8fafc}
+    .footer-grid{display:grid; grid-template-columns:1fr; gap:0.5rem; padding:1.25rem 0}
+    .muted{color:var(--muted)}
+    .cols{display:grid; grid-template-columns:1fr; gap:1rem}
+    @media (min-width:680px){ .cols{grid-template-columns:1.5fr 1fr} }
+
+    /* Skip link for a11y */
+    .skip-link{position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden}
+    .skip-link:focus{position:static; width:auto; height:auto; padding:0.5rem; background:#000; color:#fff; border-radius:6px}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header>
+    <div class="container nav">
+      <div class="brand" aria-label="Site brand">Varvara <span>• ceramics & paintings</span></div>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#ceramics">Ceramics</a></li>
+          <li><a href="#paintings">Paintings</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container cols">
+        <div>
+          <h1>Handcrafted forms. Quiet color. Honest materials.</h1>
+          <p>Small-batch studio work by Varvara — selected ceramics and paintings.</p>
+        </div>
+        <div class="muted">
+          <p>Lightweight, single‑page, no JavaScript. Images lazy‑load for speed. Replace the placeholders with your works under <code>/images</code>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ceramics Portfolio -->
+    <section id="ceramics" aria-labelledby="ceramics-heading">
+      <div class="container">
+        <h2 id="ceramics-heading">Ceramics</h2>
+        <div class="grid" role="list">
+          <!-- Replace image sources with your real files (e.g., images/ceramics-01.jpg) -->
+          <figure class="card" role="listitem">
+            <img src="images/ceramics-01.jpg" alt="Stoneware cup with matte white glaze" loading="lazy" />
+            <figcaption>
+              Stoneware Cup
+              <small>Matte white glaze, 2024</small>
+            </figcaption>
+          </figure>
+          <figure class="card" role="listitem">
+            <img src="images/ceramics-02.jpg" alt="Tall vase in speckled clay" loading="lazy" />
+            <figcaption>
+              Tall Vase
+              <small>Speckled clay, 28 cm</small>
+            </figcaption>
+          </figure>
+          <figure class="card" role="listitem">
+            <img src="images/ceramics-03.jpg" alt="Serving bowl with iron oxide wash" loading="lazy" />
+            <figcaption>
+              Serving Bowl
+              <small>Iron wash, 22 cm</small>
+            </figcaption>
+          </figure>
+          <figure class="card" role="listitem">
+            <img src="images/ceramics-04.jpg" alt="Teapot with bamboo handle" loading="lazy" />
+            <figcaption>
+              Teapot
+              <small>Stoneware, bamboo handle</small>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Paintings Portfolio -->
+    <section id="paintings" aria-labelledby="paintings-heading">
+      <div class="container">
+        <h2 id="paintings-heading">Paintings</h2>
+        <div class="grid" role="list">
+          <!-- Replace image sources with your real files (e.g., images/painting-01.jpg) -->
+          <figure class="card" role="listitem">
+            <img src="images/painting-01.jpg" alt="Abstract composition in muted blues" loading="lazy" />
+            <figcaption>
+              Blue Quiet
+              <small>Acrylic on canvas, 40×50</small>
+            </figcaption>
+          </figure>
+          <figure class="card" role="listitem">
+            <img src="images/painting-02.jpg" alt="Landscape with warm sunrise hues" loading="lazy" />
+            <figcaption>
+              Dawn Field
+              <small>Oil on panel, 30×40</small>
+            </figcaption>
+          </figure>
+          <figure class="card" role="listitem">
+            <img src="images/painting-03.jpg" alt="Minimal still life with ceramic bowl" loading="lazy" />
+            <figcaption>
+              Still Life with Bowl
+              <small>Oil on canvas, 35×45</small>
+            </figcaption>
+          </figure>
+          <figure class="card" role="listitem">
+            <img src="images/painting-04.jpg" alt="Monochrome study with strong texture" loading="lazy" />
+            <figcaption>
+              Texture Study
+              <small>Mixed media, 30×30</small>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about" aria-labelledby="about-heading">
+      <div class="container">
+        <h2 id="about-heading">About</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque non diam sit amet nisl tristique condimentum. Cras sodales, sem quis gravida vehicula, ex nisl maximus est, id congue orci nibh nec metus. Suspendisse potenti. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc finibus efficitur velit, a dignissim sapien interdum ut. Integer mattis, urna et imperdiet pharetra, dolor arcu iaculis nisl, vitae eleifend justo eros in augue.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" aria-labelledby="contact-heading">
+    <div class="container footer-grid">
+      <h2 id="contact-heading" style="margin:0">Contact</h2>
+      <div class="muted">For commissions, exhibitions, or studio visits, reach out anytime.</div>
+      <div>
+        <strong>Phone:</strong> <a href="tel:+359899999999">+359 899 999 999</a>
+      </div>
+      <div>
+        <strong>Email:</strong> <a href="mailto:varvara@yourdomain.com">varvara@yourdomain.com</a>
+        <span class="muted">(replace with your real email)</span>
+      </div>
+      <div class="muted">© <span id="y"></span> Varvara. All rights reserved.</div>
+    </div>
+    <!-- Tiny inline script to print year without impacting layout. Remove if undesired. -->
+    <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+  </footer>
+</body>
 </html>
